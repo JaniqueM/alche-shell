@@ -1,2 +1,2 @@
 #!/bin/bash
-cut -f1 | sort | uniq -c | sort -rn | head -n11
+cut -f1 > /tmp/hosts && sort /tmp/hosts > /tmp/sorted && uniq -c /tmp/sorted > /tmp/counts && sort -k1,1nr -k2 /tmp/counts > /tmp/top && head -n11 /tmp/top
