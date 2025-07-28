@@ -1,2 +1,2 @@
 #!/bin/bash
-while IFS= read -r line <&0; do printf "%s" "${line:0:1}"; done; printf "\n"
+paste -s -d '' <(cut -c1)
