@@ -1,2 +1,2 @@
 #!/bin/bash
-mapfile -t lines; printf "%s\n" "${lines[@]:0:${#lines[@]}:2}"
+$ \ls -1
