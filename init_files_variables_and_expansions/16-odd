@@ -1,2 +1,2 @@
 #!/bin/bash
-alias print=ls -l
+ls -F
