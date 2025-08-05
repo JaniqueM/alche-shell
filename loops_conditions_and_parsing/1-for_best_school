@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+for Best School in [ 1-for_best_school ]; do
+	echo "Repeat#10"
+done
