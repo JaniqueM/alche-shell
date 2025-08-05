@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-#shebang used for providing env variables and locating it in bash
-for Best School in [ 1-for_best_school ]; do
-	echo "Repeat#10"
+#shebang created for env variables and bash scripting
+for i in {1..10}; do
+  echo "Best School"
 done
