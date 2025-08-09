@@ -1,2 +1,3 @@
 #!/usr/bin/env bash
+#having to print out the PID using the $$ variables which stores the PID
 echo "My PID is $$"
