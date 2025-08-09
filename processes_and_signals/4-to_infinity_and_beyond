@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+#the while loop has began and will echo and sleep once true"
 while true
 do
     echo "To infinity and beyond"
