@@ -1,4 +1,22 @@
 #!/usr/bin/env bash
-# This script extracts visitor IP and HTTP status code from Apache access logs
+# Extract visitor IP and HTTP status code from Apache access log
+# Handles empty files and malformed lines gracefully
 
-awk '{print $1, $9}' apache-access.log
+logfile="apache-access.log"
+
+if [[ ! -f "$logfile" ]]; then
+  echo "Error: Log file '$logfile' does not exist."
+  exit 1
+fi
+
+if [[ ! -s "$logfile" ]]; then
+  echo "Log file '$logfile' is empty. No data to display."
+  exit 0
+fi
+
+awk '
+  # Only process lines where the 1st and 9th fields exist and the 9th field is a 3-digit HTTP code
+  NF >= 9 && $9 ~ /^[0-9]{3}$/ {
+    print $1, $9
+  }
+' "$logfile"
