@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-
+#creating script
 for pid in /proc/[0-9]*; do
     # Extract just the PID number
     pid_num=$(basename "$pid")
