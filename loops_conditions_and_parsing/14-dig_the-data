@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# Group visitors by IP and HTTP code, show count sorted descending
+
+awk '
+  NF >= 9 && $9 ~ /^[0-9]{3}$/ {
+    key = $1 " " $9
+    count[key]++
+  }
+  END {
+    for (k in count) {
+      print count[k], k
+    }
+  }
+' apache-access.log | sort -rn
