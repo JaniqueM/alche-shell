@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 #shebang created for env variables and bash scripting
-for Best School in {1..10}; do
-  echo "$Best School"
+for_in {1..10}; do
+  echo "Best School"
 done
