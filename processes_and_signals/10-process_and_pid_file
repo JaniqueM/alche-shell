@@ -6,17 +6,19 @@ PIDFILE="/var/run/myscript.pid"
 # Create PID file
 echo $$ > "$PIDFILE"
 
-# SIGINT handler (Ctrl+C)
+# SIGINT handler (Ctrl+C) — just prints a message
 sigint_handler() {
     echo "Y U no love me?!"
 }
 
-# SIGTERM handler (from pkill/kill)
+# SIGTERM handler — prints a message, deletes PID file, then exits
 sigterm_handler() {
     echo "I hate the kill command"
+    rm -f "$PIDFILE"
+    exit 0
 }
 
-# SIGQUIT handler: clean up and exit
+# SIGQUIT handler — deletes PID file and exits silently
 sigquit_handler() {
     rm -f "$PIDFILE"
     exit 0
