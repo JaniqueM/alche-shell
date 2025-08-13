@@ -1,16 +1,13 @@
 #!/usr/bin/env bash
-#creating script
-for pid in /proc/[0-9]*; do
-    # Extract just the PID number
-    pid_num=$(basename "$pid")
-    
-    # Check if /proc/<pid>/comm exists and is readable
-    if [[ -r "$pid/comm" ]]; then
-        proc_name=$(<"$pid/comm")
-        
-        # Check if the process name contains "bash"
-        if [[ "$proc_name" == *bash* ]]; then
-            echo "PID: $pid_num, Process Name: $proc_name"
+# Script: 3-show_your_bash_pid_made_easy
+# Display PID and process name for processes containing 'bash', without using ps
+
+for pid_dir in /proc/[0-9]*; do
+    pid=$(basename "$pid_dir")
+    if [[ -r "$pid_dir/comm" ]]; then
+        name=$(<"$pid_dir/comm")
+        if [[ "$name" == *bash* ]]; then
+            echo "$pid $name"
         fi
     fi
 done
