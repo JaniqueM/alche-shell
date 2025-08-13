@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+# Script: 10-process_and_pid_file
+# Creates a PID file, reacts to signals, and prints messages indefinitely
+
+PIDFILE="/var/run/myscript.pid"
+
+# Function to handle SIGTERM and SIGQUIT: cleanup and exit
+cleanup_and_exit() {
+    rm -f "$PIDFILE"
+    exit 0
+}
+
+# Function to handle SIGTERM specifically
+sigterm_handler() {
+    echo "I hate the kill command"
+}
+
+# Function to handle SIGINT (Ctrl+C)
+sigint_handler() {
+    echo "Y U no love me?!"
+}
+
+# Trap signals
+trap 'sigterm_handler' SIGTERM
+trap 'sigint_handler' SIGINT
+trap 'cleanup_and_exit' SIGQUIT SIGTERM
+
+# Save the PID to the file
+echo $$ > "$PIDFILE"
+
+# Infinite loop printing the message
+while true; do
+    echo "To infinity and beyond"
+    sleep 2
+done
