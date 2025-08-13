@@ -10,5 +10,4 @@ if [ -z "$pid" ]; then
 else
     # Kill the process
     kill "$pid"
-    echo "Process 4-to_infinity_and_beyond (PID $pid) has been terminated."
 fi
