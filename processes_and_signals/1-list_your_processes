@@ -1,4 +1,3 @@
-#!/usr/bin/env bash
-# This script displays a list of all currently running processes for all users
-# in a user-oriented format with process hierarchy.
-ps -ef --forest
+#!/usr/bin/bash env
+# Display all running processes, for all users, in a user-oriented format with hierarchy
+ps -ejH
