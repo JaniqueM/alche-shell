@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# Script: 7-highlander
+# Prints a message indefinitely and responds to SIGTERM
+
+# Define a function to handle SIGTERM
+term_handler() {
+    echo "I am invincible!!!"
+}
+
+# Trap SIGTERM and call the handler
+trap 'term_handler' SIGTERM
+
+# Infinite loop printing the message
+while true; do
+    echo "To infinity and beyond"
+    sleep 2
+done
