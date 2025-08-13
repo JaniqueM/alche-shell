@@ -9,7 +9,7 @@ if [ -z "$pids" ]; then
 else
     for pid in $pids; do
         # Get the controlling terminal of the process
-        tty=$(readlink /proc/$pid/fd/0 2>/dev/null)
+        tty=$(readlink /proc/"$pid"/fd/0 2>/dev/null)
         if [ -n "$tty" ]; then
             # Send Ctrl+C (SIGINT) to that terminal
             echo -ne "\x03" > "$tty"
