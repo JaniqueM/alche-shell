@@ -1,21 +1,13 @@
-#!/usr/bin/env bash
-# This script stops 4-to_infinity_and_beyond from another terminal without kill or killall
+#!/usr/bin/bash env
+# 4-to_infinity_and_beyond: runs until stopped
 
-# Find the PID(s) of the process
-pids=$(pgrep -f "4-to_infinity_and_beyond")
+# File that signals whether to continue
+flag="/tmp/4-to_infinity_and_beyond.flag"
+echo "running" > "$flag"
 
-if [ -z "$pids" ]; then
-    echo "Process 4-to_infinity_and_beyond is not running."
-else
-    for pid in $pids; do
-        # Get the controlling terminal of the process
-        tty=$(readlink /proc/"$pid"/fd/0 2>/dev/null)
-        if [ -n "$tty" ]; then
-            # Send Ctrl+C (SIGINT) to that terminal
-            echo -ne "\x03" > "$tty"
-            echo "Process $pid has been terminated via terminal $tty."
-        else
-            echo "Process $pid does not have a controlling terminal."
-        fi
-    done
-fi
+while [ -f "$flag" ]; do
+    echo "To infinity and beyond"
+    sleep 1
+done
+
+echo "Terminated"
