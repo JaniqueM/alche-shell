@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# 4-to_infinity_and_beyond: runs until stopped
+# 4-to_infinity_and_beyond: runs until flag removed
 
 flag="/tmp/4-to_infinity_and_beyond.flag"
 echo "running" > "$flag"
