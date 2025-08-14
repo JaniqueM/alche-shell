@@ -1,2 +1,2 @@
 #!/bin/bash
-while read host _; do echo "$host"; done < nasa_19950801.tsv | sort | uniq -c | sort -nr | head -n 11
+readarray -t hosts < nasa_19950801.tsv; printf "%s\n" "${hosts[@]%%$'\t'*}" | sort | uniq -c | sort -nr | head -n 11
